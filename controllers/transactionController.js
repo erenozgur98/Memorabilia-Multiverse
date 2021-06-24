@@ -11,7 +11,7 @@ module.exports = {
             });
     },
     create: function (req, res) {
-        Transaction.create(,
+        Transaction.create(
             req.body
         )
             .then((newTransaction) => {
