@@ -1,0 +1,27 @@
+[
+    {
+        "franchise_id": 1,
+        "name": "Seinfeld",
+        "logo": "../../images/stage.png"
+    },
+    {
+        "franchise_id": 2,
+        "name": "Rick and Morty",
+        "logo": "../../images/cat.png"
+    },
+    {
+        "franchise_id": 3,
+        "name": "Home Improvement",
+        "logo": "../../images/tool.png"
+    },
+    {
+        "franchise_id": 4,
+        "name": "Family Guy",
+        "logo": "../../images/family.png"
+    },
+    {
+        "franchise_id": 5,
+        "name": "The Office",
+        "logo": "../../images/office.png"
+    }
+]
