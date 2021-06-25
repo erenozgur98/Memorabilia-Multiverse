@@ -9,7 +9,7 @@ function Login() {
     const loginHandler = async (e) => {
         e.preventDefault();
         try {
-            const newLogin = await API.login({ email: email.current.value, username: username.current.value, password: password.current.value });
+            const newLogin = await API.login({ username: username.current.value, password: password.current.value });
             console.log(newLogin);
         } catch (err) {
             console.log('Login error: ', err);
