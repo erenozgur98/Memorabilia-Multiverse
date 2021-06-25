@@ -16,6 +16,7 @@ function App() {
         <Header />
         <div className='main'>
           <Route exact path='/' component={Home} />
+          <Route exact path='/home' component={Home} />
           <Route exact path='/login' render={(props) => <Login {...props}
             loggedIn={loggedIn}
             setLoggedIn={setLoggedIn}

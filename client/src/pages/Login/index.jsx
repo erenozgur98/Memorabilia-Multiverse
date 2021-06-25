@@ -9,7 +9,7 @@ function Login({ setUser, user }) {
     const loginHandler = async (e) => {
         e.preventDefault();
         try {
-            const newLogin = await API.login({ username: username.current.value, password: password.current.value });
+            const newLogin = await API.logIn({ username: username.current.value, password: password.current.value });
             console.log(newLogin);
         } catch (err) {
             console.log('Login error: ', err);
@@ -19,8 +19,8 @@ function Login({ setUser, user }) {
     return (
         <Container>
             <form action="/login" method="POST">
-                <input type="text" name="username" placeholder="username" />
-                <input type="password" name="password" placeholder="password" />
+                <input type="text" name="username" placeholder="username" ref={username} />
+                <input type="password" name="password" placeholder="password" ref={password} />
                 <button onClick={loginHandler}>Login</button>
             </form>
         </Container>

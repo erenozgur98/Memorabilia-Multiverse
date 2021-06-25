@@ -10,7 +10,7 @@ function SignUp({ setUser, user }) {
     const signupHandler = async (e) => {
         e.preventDefault();
         try {
-            const newUser = await API.signup({ email: email.current.value, username: username.current.value, password: password.current.value });
+            const newUser = await API.signUp({ email: email.current.value, username: username.current.value, password: password.current.value });
             console.log(newUser);
         } catch (err) {
             console.log('SignUp error: ', err);
@@ -20,9 +20,9 @@ function SignUp({ setUser, user }) {
     return (
         <Container>
             <form action="/login" method="POST">
-                <input type="text" name='email' placeholder='email' />
-                <input type="text" name="username" placeholder="username" />
-                <input type="password" name="password" placeholder="password" />
+                <input type="text" name='email' placeholder='email' ref={email} />
+                <input type="text" name="username" placeholder="username" ref={username} />
+                <input type="password" name="password" placeholder="password" ref={password} />
                 <button onClick={signupHandler}>Login</button>
             </form>
         </Container>
