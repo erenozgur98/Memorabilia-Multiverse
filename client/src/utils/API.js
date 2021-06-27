@@ -12,7 +12,7 @@ export default {
     },
 
     signUp: (userInfo) => {
-        return axios.post('/api/users/signup', userInfo);
+        return axios.post('/api/signup', userInfo);
     },
 
     loggedIn: () => {

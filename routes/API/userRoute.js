@@ -24,18 +24,18 @@ router.get('/login', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
     try {
-        const user = new User({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password,
-        });
-        const newUser = await user.save();
-        console.log(newUser);
-        const userJson = JSON.parse(JSON.stringify(newUser));
-        delete userJson.password;
-        res.json(userJson);
+        const user = await User.findOne({ where: { username: req.body.username }});
+        console.log(user);
+        if (user) {
+            res.json({ msg: ' There is already an account with this username ' });
+        } else {
+            const newUser = await User.create(req.body);
+            console.log(newUser);
+            delete newUser.password;
+            res.json(userJson);
+        }
     } catch (err) {
         console.log(err);
         res.status(400).json({ msg: 'Invalid Username or Password ' });
