@@ -18,6 +18,7 @@ function Login({ setUser, user }) {
 
     return (
         <Container>
+            <h1>Memorabilia Multiverse</h1>
             <form action="/login" method="POST">
                 <input type="text" name="username" placeholder="username" ref={username} />
                 <input type="password" name="password" placeholder="password" ref={password} />

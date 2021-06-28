@@ -19,6 +19,7 @@ function SignUp({ setUser, user }) {
 
     return (
         <Container>
+            <h1>Memorabilia Multiverse</h1>
             <form action="/login" method="POST">
                 <input type="text" name='email' placeholder='email' ref={email} />
                 <input type="text" name="username" placeholder="username" ref={username} />
