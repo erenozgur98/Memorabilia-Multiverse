@@ -6,9 +6,9 @@ import {
     Flex
 } from 'rebass'
 
-import { Cards } from 'react-bootstrap';
+// import { Card } from 'react-bootstrap';
 
-const Card = ({ image_link, product_name, fake_price, fake_quantity, fake_sold, id, description }) => {
+const Card = ({ image_link, product_name, fake_price, fake_quantity, fake_sold, id }) => {
     const history = useHistory()
     const redirect = () => {
         history.push(`/products/${id}`)
