@@ -1,0 +1,11 @@
+.toggle {
+    background-color: hsl(0, 0%, 7%, 60%);
+    height: 95vh;
+    color: #eee;
+    border-radius: 20px;
+    border: #eee solid;
+    margin-left: 2% !important;
+    display: grid;
+    grid-template-columns: 1;
+    min-width: 200px !important;
+}
