@@ -8,7 +8,7 @@ class User extends Model {
     }
 }
 
-User.init (
+User.init(
     {
         email: {
             type: DataTypes.STRING,
@@ -21,7 +21,10 @@ User.init (
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: true,
+            validate: {
+                isAlphanumeric: true,
+            },
         },
         password: {
             type: DataTypes.STRING,
