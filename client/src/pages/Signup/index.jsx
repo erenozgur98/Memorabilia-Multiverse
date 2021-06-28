@@ -19,15 +19,23 @@ function SignUp() {
 
     return (
         <Container>
-            <h1>Memorabilia Multiverse</h1>
-            <form action="/login" method="POST">
-                <input type="text" name='email' placeholder='email' className='form-control' ref={email} />
-                <input type="text" name="username" placeholder="username" className='form-control' ref={username} />
-                <input type="password" name="password" placeholder="password" className='form-control' ref={password} />
-                <button className='btn btn-success' onClick={signupHandler}>Signup</button>
+            <h1 className='d-flex justify-content-center'>Memorabilia Multiverse</h1>
+            <form className="px-4 py-3">
+                <div className="form-group">
+                    {/* <input type="text" name='email' placeholder='email' className='form-control' ref={email} /> */}
+                    <input type="email" className="form-control" ref={email} placeholder="email@example.com" />
+                </div>
+                <div className="form-group">
+                    <input type="text" name="username" placeholder="username" className='form-control' ref={username} />
+                </div>
+                <div className="form-group">
+                    <input type="password" name="password" placeholder="password" className='form-control' ref={password} />
+                </div>
+                <button className='btn btn-primary btn-block' onClick={signupHandler}>Signup</button>
             </form>
         </Container>
     )
 };
 
 export default SignUp;
+
