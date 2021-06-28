@@ -24,60 +24,75 @@ router.get('/login', async (req, res) => {
     }
 });
 
-router.get('/signup', async (req, res) => {
-
-});
-
-
 router.post('/signup', async (req, res) => {
     try {
-        const { email, username } = req.body;
-        const hashedPassword = await hashPassword(req.body.password);
+        const { email, username, password } = req.body;
 
         const userData = {
             email: email.toLowerCase(),
             username,
-            password: hashedPassword
+            password
         };
 
-        const existingUsername = await User.findOne({ username: req.body.username });
+        
+        // const existingUsername = await User.findOne({ username: req.body.username });
 
-        if (existingUsername) {
-            return res.status(400).json({ message: 'Username already exists' });
-        };
+        // if (existingUsername) {
+        //     return res.status(400).json({ message: 'Username already exists' });
+        // };
 
-        const newUser = new User(userData);
+        const newUser = await User.create(req.body);
+        delete newUser.password;
         const savedUser = newUser.save();
-
-        if (savedUser) {
-            const token = createToken(savedUser);
-
-            const {
-                username,
-                email
-            } = savedUser;
-
-            const userInfo = {
-                username,
-                email
-            };
-
-            return res.json({
-                message: 'User created',
-                token,
-                userInfo
-            })
-        } else {
-            return res.status(400).json({
-                message: 'There was a problem creating your account'
-            });
-        };
+        res.json(newUser);
+        console.log('New User:', newUser, 'Saved User: ', savedUser);
+       
     } catch (err) {
-      return res.status(400).json({
-        message: 'There was a problem creating your account'
-      });
+        console.log(err);
+        res.status(404).json(err);
     }
-});
+})
+
+// router.post('/signup', async (req, res) => {
+//     try {
+//         const { email, username } = req.body;
+//         const hashedPassword = await hashPassword(req.body.password);
+
+//         const userData = { email: email.toLowerCase(), username, password: hashedPassword };
+
+//         const existingUsername = await User.findOne({ username: req.body.username });
+
+//         if (existingUsername) {
+//             return res.status(400).json({ message: 'Username already exists' });
+//         };
+
+//         const newUser = new User(userData);
+//         const savedUser = newUser.save();
+
+//         if (savedUser) {
+//             const token = createToken(savedUser);
+
+//             const { username, email } = savedUser;
+
+//             const userInfo = { username, email };
+//             console.log('TESTING IF USERINFO GOT THE INFO: ', userInfo.username);
+
+//             return res.json({
+//                 message: 'User created',
+//                 token,
+//                 userInfo
+//             })
+//         } else {
+//             return res.status(400).json({
+//                 message: 'There was a problem'
+//             });
+//         };
+//     } catch (err) {
+//       return res.status(404).json({
+//         message: 'There was a problem creating your account'
+//       });
+//     }
+// });
 
 
 router.post('/login', async (req, res) => {

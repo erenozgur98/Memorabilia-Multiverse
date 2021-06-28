@@ -23,7 +23,7 @@ function SignUp({ setUser, user }) {
                 <input type="text" name='email' placeholder='email' ref={email} />
                 <input type="text" name="username" placeholder="username" ref={username} />
                 <input type="password" name="password" placeholder="password" ref={password} />
-                <button onClick={signupHandler}>Login</button>
+                <button onClick={signupHandler}>Signup</button>
             </form>
         </Container>
     )

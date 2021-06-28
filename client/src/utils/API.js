@@ -4,15 +4,15 @@ import axios from 'axios';
 export default {
 
     logIn: (userInfo) => {
-        return axios.post('/api/login', userInfo);
+        return axios.post('/api/users/login', userInfo);
     },
 
     logOut: () => {
-        return axios.post('/api/logout');
+        return axios.post('/api/users/logout');
     },
 
     signUp: (userInfo) => {
-        return axios.post('/api/signup', userInfo);
+        return axios.post('/api/users/signup', userInfo);
     },
 
     loggedIn: () => {
