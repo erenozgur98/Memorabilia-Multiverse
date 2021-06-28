@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import API from '../../utils/API';
 import { Container } from 'react-bootstrap';
 
-function Login({ setUser, user }) {
+function Login() {
     const username = useRef();
     const password = useRef();
 
@@ -26,6 +26,6 @@ function Login({ setUser, user }) {
             </form>
         </Container>
     )
-}
+};
 
 export default Login;
