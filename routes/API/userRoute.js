@@ -24,23 +24,61 @@ router.get('/login', async (req, res) => {
     }
 });
 
+router.get('/signup', async (req, res) => {
+
+});
+
+
 router.post('/signup', async (req, res) => {
     try {
-        const user = await User.findOne({ where: { username: req.body.username }});
-        console.log(user);
-        if (user) {
-            res.json({ msg: ' There is already an account with this username ' });
+        const { email, username } = req.body;
+        const hashedPassword = await hashPassword(req.body.password);
+
+        const userData = {
+            email: email.toLowerCase(),
+            username,
+            password: hashedPassword
+        };
+
+        const existingUsername = await User.findOne({ username: req.body.username });
+
+        if (existingUsername) {
+            return res.status(400).json({ message: 'Username already exists' });
+        };
+
+        const newUser = new User(userData);
+        const savedUser = newUser.save();
+
+        if (savedUser) {
+            const token = createToken(savedUser);
+
+            const {
+                username,
+                email
+            } = savedUser;
+
+            const userInfo = {
+                username,
+                email
+            };
+
+            return res.json({
+                message: 'User created',
+                token,
+                userInfo
+            })
         } else {
-            const newUser = await User.create(req.body);
-            console.log(newUser);
-            delete newUser.password;
-            res.json(userJson);
-        }
+            return res.status(400).json({
+                message: 'There was a problem creating your account'
+            });
+        };
     } catch (err) {
-        console.log(err);
-        res.status(400).json({ msg: 'Invalid Username or Password ' });
+      return res.status(400).json({
+        message: 'There was a problem creating your account'
+      });
     }
 });
+
 
 router.post('/login', async (req, res) => {
     try {

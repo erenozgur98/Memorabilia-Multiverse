@@ -4,11 +4,11 @@ import axios from 'axios';
 export default {
 
     logIn: (userInfo) => {
-        return axios.post('/api/users/login', userInfo);
+        return axios.post('/api/login', userInfo);
     },
 
     logOut: () => {
-        return axios.post('/api/users/logout');
+        return axios.post('/api/logout');
     },
 
     signUp: (userInfo) => {
@@ -16,6 +16,10 @@ export default {
     },
 
     loggedIn: () => {
-        return axios.get('/api/users/user');
-    }
+        return axios.get('/api/user');
+    },
+
+    getAllUsers: () => {
+        return axios.get('/api/users');
+    },
 }
