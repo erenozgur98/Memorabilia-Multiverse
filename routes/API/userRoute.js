@@ -26,6 +26,8 @@ router.get('/login', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
     try {
+        if(!req.body.role) req.body.role = 'user';
+
         const user = await User.findOne({ where: { username: req.body.username }});
         if (user) {
             res.status(400).json({ message: 'That username is taken buddy '});
