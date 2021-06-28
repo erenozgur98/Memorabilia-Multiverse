@@ -1,0 +1,38 @@
+Button {
+    border-color: #eee !important;
+    border: 2px;
+    background-color: hsl(0, 0%, 7%, 60%);
+    text-align: center !important;
+    cursor: pointer !important;
+}
+.dash {
+    text-align: center;
+}
+.dashcards {
+    background-image: url('../../images/shop.png') !important;
+    background-size: 150vh, 100vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: top;
+    border: #eee;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 20px;
+    padding-top: 20%;
+    justify-content: space-evenly; 
+    margin-bottom: 3% !important;
+}
+.dashcards2 {
+    background-image: url('../../images/order.png') !important;
+    background-size: 150vh, 100vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: top;
+    border: #eee;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 20px;
+    padding-top: 20%;
+    justify-content: space-evenly; 
+    margin-bottom: 3% !important;
+}

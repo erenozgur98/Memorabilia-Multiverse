@@ -1,0 +1,148 @@
+a:-webkit-any-link {
+    color: #eee;
+    cursor: pointer;
+    margin-right: 2%;
+    text-decoration: none;
+}
+.footicons {
+    font-size: 30px;
+    margin: 5%;
+
+}
+.centerfoot {
+    padding-right: 45% !important;
+    padding-top: .25%;
+    padding-bottom: .25%;
+}
+.css-1viozcy {
+    flex-direction: column;
+}
+.css-b9ap5w {
+    width: 100% !important
+}
+.form {
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.formCard {
+    border: #121212;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 20px;
+    padding-left: 2%;
+    padding-right: 2%;
+    width: 30%;
+}
+.css-cd2v0o {
+    width: 100% !important;
+    margin-left: 2% !important;
+}
+Button {
+    background-color: #121212;
+    border-radius: 40px !important;
+    width: 50%;
+    margin-top: 2% !important;
+    margin-bottom: 2% !important;
+}
+.btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.redirect {
+    color: black !important
+}
+.dashcards {
+    background-color: hsl(0, 0%, 7%, 60%);
+    border: #eee;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly; 
+    width: 100% !important;
+    margin-bottom: 3% !important;
+}
+.dashcards2 {
+    background-color: hsl(0, 0%, 7%, 60%);
+    border: #eee;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 2%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content:space-evenly; 
+    width: 100% !important;
+    margin-bottom: 3% !important;
+}
+.dash {
+    margin-right: 20% !important;
+    justify-content: center;
+    width: auto;
+}
+.biggerboot {
+    background-color: hsl(0, 0%, 7%, 60%);
+    border: #eee;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 20px;
+    padding: .5%;
+    display: grid !important;
+    grid-template-columns: 4;
+    text-align: center;
+    justify-content: space-evenly; 
+    width: 20% !important;
+    margin: 5px !important;
+    margin-bottom: 3% !important;
+}
+.boot {
+    display: flex;
+    flex-direction: column;
+}
+.smallerboot {
+    display: grid;
+    grid-template-columns: 2;
+    justify-content: space-evenly;
+}
+.toes {
+    display: grid;
+    grid-template-rows: 3;
+    text-align: center;
+    margin-left: 5% !important;
+}
+.imgs {
+    margin-right: 2% !important;
+    margin-top: 3% !important
+}
+img {
+    width: 150px;
+    border-radius: 10px;
+    border: #eee solid;
+}
+.title {
+    margin-left: 3% !important;
+    width: 100% !important;
+    height: 10% !important;
+    position: center;
+    margin-bottom: 2% !important
+}
+.display {
+    display: table-row !important;
+    font-size: 1.5rem !important;
+    font-style: bold !important;
+    font-weight: 600 !important;
+    text-align: center;
+}
+@media only screen and (max-width:1515px) {
+    .display {
+        font-size: 1rem !important;
+    }
+}

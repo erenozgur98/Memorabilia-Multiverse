@@ -1,0 +1,23 @@
+.cart {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color:hsl(0, 0%, 7%, 60%);
+    border-radius: 20px; 
+
+}
+h1 {
+    color: #eee;
+    margin: 3%;
+}
+h3 {
+    margin: 3%;
+    color: #eee;
+}
+p {
+    margin: 3%;
+    color: #eee;
+}
+.btn {
+    margin: 3% !important;
+}
