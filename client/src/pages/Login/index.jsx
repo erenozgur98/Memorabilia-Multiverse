@@ -24,9 +24,9 @@ function Login() {
         <Container>
             <h1>Memorabilia Multiverse</h1>
             <form action="/login" method="POST">
-                <input type="text" name="username" placeholder="username" ref={username} />
-                <input type="password" name="password" placeholder="password" ref={password} />
-                <button onClick={loginHandler}>Login</button>
+                <input type="text" name="username" placeholder="username" className='form-control' ref={username} />
+                <input type="password" name="password" placeholder="password" className='form-control' ref={password} />
+                <button className='btn btn-success' onClick={loginHandler}>Login</button>
             </form>
         </Container>
     )
