@@ -31,6 +31,11 @@ function Header() {
                             Sign Up
                         </div>
                     </Nav.Link>
+                    <Nav.Link as={Link} to='/logout' className='nav-link'>
+                        <div className="navLinks">
+                            Log Out
+                        </div>
+                    </Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
