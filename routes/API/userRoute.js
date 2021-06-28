@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../../models/User');
+const bcrypt = require('bcrypt');
 
 router.get('/', async (req, res) => {
     try {
@@ -26,16 +27,16 @@ router.get('/login', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
     try {
-        if(!req.body.role) req.body.role = 'user';
+        if (!req.body.role) req.body.role = 'user';
 
-        const user = await User.findOne({ where: { username: req.body.username }});
+        const user = await User.findOne({ where: { username: req.body.username } });
         if (user) {
-            res.status(400).json({ message: 'That username is taken buddy '});
+            res.status(400).json({ message: 'That username is taken buddy ' });
         } else {
             const newUser = await User.create(req.body);
             delete newUser.password;
             res.json(newUser);
-
+            console.log(newUser);
         };
     } catch (err) {
         console.log(err);
@@ -46,29 +47,48 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const user = await User.findOne({ where: { username: req.body.username } });
-        const password = await User.findone({ where: {password: req.body.password }});
 
         if (!user) {
             res.status(400).json({ msg: 'Incorrect Username or Password' });
             return;
         };
 
-        if (!password) {
-            req.status(400).json({ msg: 'Incorrect Username of Password' });
+        const validPassword = await bcrypt.compare(
+            req.body.password,
+            user.password
+        );
+
+        if (!validPassword) {
+            res.status(400).json({ message: 'Login failed. Please try again!' });
             return;
-        };
+          }
 
         req.session.save(() => {
-            res.session.userId = user.id;
+            res.session.userId = user._id;
             req.session.username = user.username;
             req.session.loggedIn = true;
         });
 
         res.json({ user: user, message: 'Logged In!' });
+        console.log(user);
 
     } catch (err) {
         console.log(err);
         res.status(400).json(err);
+    }
+});
+
+// GET one user
+router.get('/:id', async (req, res) => {
+    try {
+      const userData = await User.findByPk(req.params.id);
+      if (!userData) {
+        res.status(404).json({ message: 'No user with this id!' });
+        return;
+      }
+      res.status(200).json(userData);
+    } catch (err) {
+      res.status(500).json(err);
     }
 });
 
