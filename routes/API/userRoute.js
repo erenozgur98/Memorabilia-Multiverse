@@ -25,6 +25,7 @@ router.get('/login', async (req, res) => {
     }
 });
 
+// POST create a new user
 router.post('/signup', async (req, res) => {
     try {
         if (!req.body.role) req.body.role = 'user';
@@ -44,6 +45,7 @@ router.post('/signup', async (req, res) => {
     }
 })
 
+// POST user login
 router.post('/login', async (req, res) => {
     try {
         const user = await User.findOne({ where: { username: req.body.username } });
@@ -92,6 +94,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// PUT update a user
 router.put('/:id', async (req, res) => {
     try {
         const user = await User.findById(
@@ -120,7 +123,7 @@ router.post('/logout', (req, res) => {
         })
     } else {
         res.status(404).end();
-    }
+    };
 });
 
 
