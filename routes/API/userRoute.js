@@ -32,7 +32,7 @@ router.post('/signup', async (req, res) => {
 
         const user = await User.findOne({ where: { username: req.body.username } });
         if (user) {
-            res.status(400).json({ message: 'That username is taken buddy' });
+            res.status(400).json({ message: 'That username is taken' });
         } else {
             const newUser = await User.create(req.body);
             delete newUser.password;

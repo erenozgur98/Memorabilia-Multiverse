@@ -1,20 +1,23 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import API from '../../utils/API';
 import { Container } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 
-function SignUp() {
+function SignUp({ setUser, user }) {
     const history = useHistory();
 
     const email = useRef();
     const username = useRef();
     const password = useRef();
 
+    
     const signupHandler = async (e) => {
         e.preventDefault();
         try {
             const newUser = await API.signUp({ email: email.current.value, username: username.current.value, password: password.current.value });
             console.log(newUser);
+            delete newUser.data.password;
+            setUser(newUser);
             history.push('/');
         } catch (err) {
             console.log('SignUp error: ', err);

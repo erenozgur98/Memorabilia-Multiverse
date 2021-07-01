@@ -3,7 +3,7 @@ import API from '../../utils/API';
 import { Container } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 
-function Login() {
+function Login({ setUser, user }) {
     const history = useHistory();
 
     const username = useRef();
