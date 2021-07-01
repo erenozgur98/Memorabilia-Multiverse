@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/login', async (req, res) => {
+router.get('/user', async (req, res) => {
     try {
         if (req.session.userId) {
             res.send({ loggedIn: true, userId: req.session.userId });

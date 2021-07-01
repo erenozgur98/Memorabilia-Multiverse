@@ -4,11 +4,24 @@ import SignUp from './pages/Signup';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Header from './components/Header';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import API from './utils/API';
 
 function App() {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    API.loggedIn()
+      .then(x => {
+        console.log('useEffect console log line 17: ', x.data)
+      })
+  }, []);
+
+  // const handleLogout = () => {
+  //   setUser({});
+  //   API.logOut();
+  // };
 
   return (
     <div>
