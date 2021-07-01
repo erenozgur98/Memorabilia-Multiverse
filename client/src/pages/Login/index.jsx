@@ -14,6 +14,8 @@ function Login({ setUser, user }) {
         try {
             const newUser = await API.logIn({ username: username.current.value, password: password.current.value });
             console.log(newUser);
+            delete newUser.data.password;
+            setUser(newUser);
             history.push('/');
         } catch (err) {
             console.log('SignUp error: ', err);
