@@ -32,7 +32,7 @@ router.post('/signup', async (req, res) => {
 
         const user = await User.findOne({ where: { username: req.body.username } });
         if (user) {
-            res.status(400).json({ message: 'That username is taken buddy ' });
+            res.status(400).json({ message: 'That username is taken buddy' });
         } else {
             const newUser = await User.create(req.body);
             delete newUser.password;
@@ -63,10 +63,10 @@ router.post('/login', async (req, res) => {
         if (!validPassword) {
             res.status(400).json({ message: 'Login failed. Please try again!' });
             return;
-          }
+        }
 
         req.session.save(() => {
-            res.session.userId = user._id;
+            res.session.userId = user.id;
             req.session.username = user.username;
             req.session.loggedIn = true;
         });
