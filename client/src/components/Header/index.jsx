@@ -11,7 +11,7 @@ function Header() {
             sticky='top'
         >
             <NavbarBrand as={Link} className='navbar-brand' to='/'>
-                <img src='' className='logo' alt='logo' />
+                <p>logo goes here</p>
             </NavbarBrand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
