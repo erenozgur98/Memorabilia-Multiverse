@@ -1,16 +1,21 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import API from '../../utils/API';
 import { Container } from 'react-bootstrap';
-import { useHistory } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 
 function SignUp({ setUser, user }) {
+    const [redirect, setRedirect] = useState(false);
     const history = useHistory();
 
     const email = useRef();
     const username = useRef();
     const password = useRef();
 
-    
+    useEffect(() => {
+        if (user.username) setRedirect(true);
+    }, [user])
+
+
     const signupHandler = async (e) => {
         e.preventDefault();
         try {
@@ -26,6 +31,7 @@ function SignUp({ setUser, user }) {
 
     return (
         <Container>
+            {redirect && <Redirect to='/' />}
             <h1 className='d-flex justify-content-center'>Memorabilia Multiverse</h1>
             <form className="px-4 py-3">
                 <div className="form-group">
