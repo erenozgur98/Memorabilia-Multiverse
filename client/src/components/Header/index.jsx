@@ -2,7 +2,7 @@ import React from 'react'
 import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({ user, handleLogout }) {
     return (
         <Navbar
             collapseOnSelect
@@ -31,7 +31,7 @@ function Header() {
                             Sign Up
                         </div>
                     </Nav.Link>
-                    <Nav.Link as={Link} to='/logout' className='nav-link'>
+                    <Nav.Link as={Link} to='/' className='nav-link' onClick={handleLogout}>
                         <div className="navLinks">
                             Log Out
                         </div>

@@ -19,17 +19,22 @@ function App() {
         setUser(x.data);
         // setLoaded(true); will use later
       })
+      .catch(err => {
+        console.log(err);
+        // setLoaded(true); will use later
+      })
   }, []);
 
-  // const handleLogout = () => {
-  //   setUser({});
-  //   API.logOut();
-  // };
+  const handleLogout = () => {
+    console.log('logged out')
+    setUser({});
+    API.logOut();
+  };
 
   return (
     <div>
       <Router>
-        <Header />
+        <Header user={user} handleLogout={handleLogout} />
         <div className='main'>
           <Route exact path='/' component={Home} />
           <Route exact path='/home' component={Home} />

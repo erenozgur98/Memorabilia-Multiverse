@@ -117,10 +117,12 @@ router.put('/:id', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
+    console.log('logout route ---------------------------------', req.session);
     if (req.session) {
         req.session.destroy(() => {
             res.status(204).end();
-        })
+        });
+        console.log('logged out, line 125 userRoute.js ================================')
     } else {
         res.status(404).end();
     };
