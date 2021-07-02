@@ -10,11 +10,14 @@ import API from './utils/API';
 function App() {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+  // const [loaded, setLoaded] = useState(false); will use later
 
   useEffect(() => {
     API.loggedIn()
       .then(x => {
         console.log('useEffect console log line 17: ', x.data)
+        setUser(x.data);
+        // setLoaded(true); will use later
       })
   }, []);
 
