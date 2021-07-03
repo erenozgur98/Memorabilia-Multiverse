@@ -15,16 +15,16 @@ router.get('/', async (req, res) => {
 router.get("/login", async (req, res) => {
     console.log('line 16', req.session, req.session.user_id);
     try {
-      if (req.session.user_id) {
-        res.send({ logged_in: true, user_id: req.session.user_id });
-      } else {
-        res.send({ logged_in: false });
-      }
+        if (req.session.user_id) {
+            res.send({ logged_in: true, user_id: req.session.user_id });
+        } else {
+            res.send({ logged_in: false });
+        }
     } catch (err) {
-      console.log("Line 23", err)
-      res.status(400).json(err);
+        console.log("Line 23", err)
+        res.status(400).json(err);
     }
-  })
+});
 
 router.get('/user', async (req, res) => {
     console.log('*********************** LINE 30, ', req.session, req.session.logged_in, req.session.user_id);
@@ -69,7 +69,7 @@ router.post('/signup', async (req, res) => {
         console.log(err);
         res.status(404).json(err);
     }
-})
+});
 
 // POST user login
 router.post('/login', async (req, res) => {
@@ -113,7 +113,7 @@ router.post('/login', async (req, res) => {
         };
 
 
-        res.json({ user: user, userInfo});
+        res.json({ user: user, userInfo });
         console.log('**************************** Line 88', user);
 
     } catch (err) {

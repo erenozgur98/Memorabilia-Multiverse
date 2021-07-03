@@ -11,8 +11,6 @@ function Login({ setUser, user }) {
     const password = useRef();
 
     useEffect(() => {
-        console.log('line 14 login.jsx, ', user);
-        console.log('line 15 login.jsx, ', user.data);
         if (user.username) setRedirect(true);
     }, [user])
 
@@ -23,7 +21,8 @@ function Login({ setUser, user }) {
             console.log(newUser);
             delete newUser.data.user.password;
             setUser(newUser);
-            history.push('/');
+            setRedirect(true);
+            // history.push('/');
         } catch (err) {
             console.log('Login error: ', err);
         }

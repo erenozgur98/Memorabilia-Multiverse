@@ -23,7 +23,8 @@ function SignUp({ setUser, user }) {
             console.log(newUser);
             delete newUser.data.password;
             setUser(newUser);
-            history.push('/');
+            setRedirect(true);
+            // history.push('/');
         } catch (err) {
             console.log('SignUp error: ', err);
         }
