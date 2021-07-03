@@ -13,7 +13,7 @@ function SignUp({ setUser, user }) {
 
     useEffect(() => {
         if (user.username) setRedirect(true);
-    }, [user])
+    }, [user]);
 
 
     const signupHandler = async (e) => {
