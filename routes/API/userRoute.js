@@ -13,16 +13,22 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/user', async (req, res) => {
-    try {
-        if (req.session.userId) {
-            res.send({ loggedIn: true, userId: req.session.userId });
-        } else {
-            res.send({ loggedIn: false });
-        }
-    } catch (err) {
-        console.log(err);
-        res.status(400).json(err);
+  try {
+    if (req.user) {
+        const userData = await User.findByPk(req.user)
+        console.log('******************** /user ', req.user)
+        const userInfo = {
+            role = userData.dataValues.role,
+            username = userData.dataValues.username,
+            email: userData.dataValues.email
+        };
+        res.json(userInfo);
+    } else {
+        res.status(403).json({ message: 'Something went wrong getting the user '});
     }
+  } catch(err) {
+      console.log('********************line 19 catch err', err);
+  };
 });
 
 // POST create a new user
