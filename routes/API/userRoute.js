@@ -73,7 +73,6 @@ router.post('/signup', async (req, res) => {
 
 // POST user login
 router.post('/login', async (req, res) => {
-    console.log('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz', req.body, req.session);
     try {
         const user = await User.findOne({ where: { username: req.body.username } });
 
@@ -93,31 +92,15 @@ router.post('/login', async (req, res) => {
         }
 
         const userData = JSON.parse(JSON.stringify(user));
-        console.log('ladskasfhdlksadf', userData);
-
-        // req.session.save(() => {
-        //     req.session.user_id = userData.id;
-        //     req.session.username = userData.username;
-        //     req.session.logged_in = true;
-        // });
 
         req.session.user_id = userData.id
         req.session.logged_in = true;
         req.session.username = userData.username;
 
-        const userInfo = {
-            username: user.dataValues.username,
-            role: user.dataValues.role,
-            id: user.dataValues.id,
-            email: user.dataValues.email,
-        };
-
-
-        res.json({ user: user, userInfo });
-        console.log('**************************** Line 88', user);
+        res.json({ user: user });
 
     } catch (err) {
-        console.log('Line 100 ERROR ----------------------------------', err);
+        console.log('Line 110 ERROR ----------------------------------', err);
         res.status(400).json(err);
     }
 });
