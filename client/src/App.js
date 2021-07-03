@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Header from './components/Header';
 import { useEffect, useState } from 'react';
 import API from './utils/API';
+import WithAuth from './components/WithAuth';
 
 function App() {
   const [user, setUser] = useState({});

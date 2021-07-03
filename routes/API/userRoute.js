@@ -12,12 +12,25 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/user', async (req, res) => {
-    console.log('*********************** LINE 16, ', req.session, req.user, req.body);
+router.get("/login", async (req, res) => {
+    console.log('line 16', req.session, req.session.userId);
     try {
-        if (req.user) {
-            const userData = await User.findByPk(req.body)
-            console.log('******************** /user ', req.body)
+      if (req.session.userId) {
+        res.send({ loggedIn: true, userId: req.session.userId });
+      } else {
+        res.send({ loggedIn: false });
+      }
+    } catch (err) {
+      console.log("Line 23", err)
+      res.status(400).json(err);
+    }
+  })
+
+router.get('/user', async (req, res) => {
+    console.log('*********************** LINE 30, ', req.session, req.session.loggedIn, req.session.userId);
+    try {
+        if (req.session.loggedIn) {
+            const userData = await User.findByPk(req.session.userId);
             const userInfo = {
                 role: userData.dataValues.role,
                 username: userData.dataValues.username,
@@ -79,12 +92,20 @@ router.post('/login', async (req, res) => {
         }
 
         req.session.save(() => {
-            req.session.userId = user.dataValues.id;
+            req.session.userId = user.dataValues.userId;
             req.session.username = user.dataValues.username;
             req.session.loggedIn = true;
         });
 
-        res.json({ user: user, message: 'Logged In!' });
+        const userInfo = {
+            username: user.dataValues.username,
+            role: user.dataValues.role,
+            id: user.dataValues.id,
+            email: user.dataValues.email,
+        };
+
+
+        res.json({ user: user, userInfo});
         console.log('**************************** Line 88', user);
 
     } catch (err) {

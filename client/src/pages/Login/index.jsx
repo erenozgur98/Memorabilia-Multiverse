@@ -23,9 +23,9 @@ function Login({ setUser, user }) {
             console.log(newUser);
             delete newUser.data.user.password;
             setUser(newUser);
-            history.push('/');
+            // history.push('/');
         } catch (err) {
-            console.log('SignUp error: ', err);
+            console.log('Login error: ', err);
         }
     };
 
