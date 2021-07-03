@@ -13,12 +13,12 @@ router.get('/', async (req, res) => {
 });
 
 router.get("/login", async (req, res) => {
-    console.log('line 16', req.session, req.session.userId);
+    console.log('line 16', req.session, req.session.user_id);
     try {
-      if (req.session.userId) {
-        res.send({ loggedIn: true, userId: req.session.userId });
+      if (req.session.user_id) {
+        res.send({ logged_in: true, user_id: req.session.user_id });
       } else {
-        res.send({ loggedIn: false });
+        res.send({ logged_in: false });
       }
     } catch (err) {
       console.log("Line 23", err)
@@ -27,14 +27,15 @@ router.get("/login", async (req, res) => {
   })
 
 router.get('/user', async (req, res) => {
-    console.log('*********************** LINE 30, ', req.session, req.session.loggedIn, req.session.userId);
+    console.log('*********************** LINE 30, ', req.session, req.session.logged_in, req.session.user_id);
     try {
-        if (req.session.loggedIn) {
-            const userData = await User.findByPk(req.session.userId);
+        if (req.session.logged_in) {
+            const userData = await User.findByPk(req.session.user_id);
             const userInfo = {
                 role: userData.dataValues.role,
                 username: userData.dataValues.username,
-                email: userData.dataValues.email
+                email: userData.dataValues.email,
+                logged_in: true
             };
             res.json(userInfo);
         } else {
@@ -91,11 +92,18 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-        req.session.save(() => {
-            req.session.userId = user.dataValues.userId;
-            req.session.username = user.dataValues.username;
-            req.session.loggedIn = true;
-        });
+        const userData = JSON.parse(JSON.stringify(user));
+        console.log('ladskasfhdlksadf', userData);
+
+        // req.session.save(() => {
+        //     req.session.user_id = userData.id;
+        //     req.session.username = userData.username;
+        //     req.session.logged_in = true;
+        // });
+
+        req.session.user_id = userData.id
+        req.session.logged_in = true;
+        req.session.username = userData.username;
 
         const userInfo = {
             username: user.dataValues.username,
