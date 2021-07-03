@@ -43,6 +43,9 @@ function Login({ setUser, user }) {
                 </div>
                 <button className='btn btn-primary btn-block' onClick={loginHandler}>Login</button>
             </form>
+            <div className='d-flex justify-content-center'>
+                <p>Don't have an account? Sign up <a href='/signup'>here</a>!</p>
+            </div>
         </Container>
     )
 };

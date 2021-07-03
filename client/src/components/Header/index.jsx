@@ -3,6 +3,7 @@ import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Header({ user, handleLogout }) {
+
     return (
         <>
             {user.username ? (
@@ -52,11 +53,6 @@ function Header({ user, handleLogout }) {
                             <Nav.Link as={Link} to='/login' className='nav-link'>
                                 <div className="navLinks">
                                     Login
-                                </div>
-                            </Nav.Link>
-                            <Nav.Link as={Link} to='/signup' className='nav-link'>
-                                <div className="navLinks">
-                                    Sign Up
                                 </div>
                             </Nav.Link>
                         </Nav>
