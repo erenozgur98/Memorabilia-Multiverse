@@ -13,13 +13,14 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/user', async (req, res) => {
+    console.log('*********************** LINE 16, ', req.session, req.user);
   try {
     if (req.user) {
         const userData = await User.findByPk(req.user)
         console.log('******************** /user ', req.user)
         const userInfo = {
-            role = userData.dataValues.role,
-            username = userData.dataValues.username,
+            role: userData.dataValues.role,
+            username: userData.dataValues.username,
             email: userData.dataValues.email
         };
         res.json(userInfo);
