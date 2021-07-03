@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SignUp from './pages/Signup';
 import Login from './pages/Login';
-import Home from './pages/Home';
+import Shop from './pages/Shop';
 import Header from './components/Header';
 import { useEffect, useState } from 'react';
 import API from './utils/API';
@@ -38,8 +38,8 @@ function App() {
         <Header user={user} handleLogout={handleLogout} />
         <div className='main'>
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/home' component={Home} />
+            <Route exact path='/' component={Shop} />
+            <Route exact path='/home' component={Shop} />
             <Route exact path='/login' render={(props) => <Login {...props}
               loggedIn={loggedIn}
               setLoggedIn={setLoggedIn}

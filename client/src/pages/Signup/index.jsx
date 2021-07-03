@@ -33,7 +33,7 @@ function SignUp({ setUser, user }) {
     return (
         <Container>
             {redirect && <Redirect to='/' />}
-            <h1 className='d-flex justify-content-center'>Memorabilia Multiverse</h1>
+            {/* <h1 className='d-flex justify-content-center'>Memorabilia Multiverse</h1> */}
             <form className="px-4 py-3">
                 <div className="form-group">
                     <input type="email" className="form-control" ref={email} placeholder="email@example.com" />
