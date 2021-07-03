@@ -16,7 +16,7 @@ export default {
     },
 
     loggedIn: () => {
-        return axios.get('/api/users/');
+        return axios.get('/api/users/user');
     },
 
     getAllUsers: () => {

@@ -11,6 +11,8 @@ function Login({ setUser, user }) {
     const password = useRef();
 
     useEffect(() => {
+        console.log('line 14 login.jsx, ', user);
+        console.log('line 15 login.jsx, ', user.data);
         if (user.username) setRedirect(true);
     }, [user])
 
