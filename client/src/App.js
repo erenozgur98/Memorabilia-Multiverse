@@ -14,9 +14,9 @@ function App() {
 
   useEffect(() => {
     API.loggedIn()
-      .then(x => {
-        console.log('useEffect console log line 17: ', x.data)
-        setUser(x.data);
+      .then(result => {
+        console.log('useEffect console log line 17: ', result.data)
+        setUser(result.data);
         // setLoaded(true); will use later
       })
       .catch(err => {
