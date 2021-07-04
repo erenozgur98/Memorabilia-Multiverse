@@ -19,7 +19,7 @@ function Header({ user, handleLogout }) {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className='ml-auto navbar'>
-                            <Nav.Link as={Link} to='/home' className='nav-link'>
+                            <Nav.Link as={Link} to='/shop' className='nav-link'>
                                 <div className="navLinks">
                                     Shop
                                 </div>
@@ -45,7 +45,7 @@ function Header({ user, handleLogout }) {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className='ml-auto navbar'>
-                            <Nav.Link as={Link} to='/home' className='nav-link'>
+                            <Nav.Link as={Link} to='/shop' className='nav-link'>
                                 <div className="navLinks">
                                     Shop
                                 </div>

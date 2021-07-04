@@ -7,6 +7,7 @@ import Header from './components/Header';
 import { useEffect, useState } from 'react';
 import API from './utils/API';
 import WithAuth from './components/WithAuth';
+import Toggle from './components/Toggle';
 
 function App() {
   const [user, setUser] = useState({});
@@ -39,7 +40,7 @@ function App() {
         <div className='main'>
           <Switch>
             <Route exact path='/' component={Shop} />
-            <Route exact path='/home' component={Shop} />
+            <Route exact path='/shop' component={Shop} />
             <Route exact path='/login' render={(props) => <Login {...props}
               loggedIn={loggedIn}
               setLoggedIn={setLoggedIn}
