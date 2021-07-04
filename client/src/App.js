@@ -6,12 +6,14 @@ import Shop from './pages/Shop';
 import Header from './components/Header';
 import { useEffect, useState } from 'react';
 import API from './utils/API';
+import Toggle from './components/Toggle';
+import ToggleContainer from './components/Toggle-Container';
 // import WithAuth from './components/WithAuth';
 
 function App() {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  const [, setLoaded] = useState(false);
 
   useEffect(() => {
     API.loggedIn()
@@ -40,6 +42,8 @@ function App() {
           <Switch>
             <Route exact path='/' component={Shop} />
             <Route exact path='/shop' component={Shop} />
+            <Route exact path='/asdf' component={Toggle} />
+            <Route exact path='/asdfg' component={ToggleContainer} />
             <Route exact path='/login' render={(props) => <Login {...props}
               loggedIn={loggedIn}
               setLoggedIn={setLoggedIn}

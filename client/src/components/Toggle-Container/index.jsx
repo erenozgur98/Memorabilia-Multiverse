@@ -4,7 +4,7 @@ import API from '../../utils/API';
 import Toggle from '../Toggle';
 
 function ToggleContainer({ franchiseSelected }) {
-    const [franchiseData, setFranchiseData] = useState();
+    const [franchiseData, setFranchiseData] = useState([]);
 
     useEffect(() => {
         API.getFranchises()
@@ -23,6 +23,6 @@ function ToggleContainer({ franchiseSelected }) {
             )}
         </Container>
     )
-}
+};
 
 export default ToggleContainer;

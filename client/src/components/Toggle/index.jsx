@@ -13,22 +13,19 @@ const Toggle = (props) => {
         }
     };
 
-
     return (
         <div>
             <Container>
-                {/* <label className='d-flex' > */}
-                    {/* <span className='pr-2'>Label</span> */}
                     <Form.Check
                         type='radio'
                         id={props.id}
                         label={props.name}
                         checked={props.franchiseSelected === props.id}
+                        onClick={() => changeFranchise(props.id)}
                     />
-                {/* </label> */}
             </Container>
         </div >
     )
-}
+};
 
 export default Toggle;
