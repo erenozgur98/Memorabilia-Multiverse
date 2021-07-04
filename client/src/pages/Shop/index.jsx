@@ -29,9 +29,13 @@ function Shop() {
     return (
         <Container>
             <ToggleContainer franchiseSelected={franchise} />
-            {itemList.map((item, i) => (
-                <Cards key={i} {...item} />
-            ))}
+            <div className="row cardStyle">
+                {itemList.map((item, i) => (
+                    <div className="col-sm-4">
+                        <Cards key={i} {...item} />
+                    </div>
+                ))}
+            </div>
         </Container>
     )
 }

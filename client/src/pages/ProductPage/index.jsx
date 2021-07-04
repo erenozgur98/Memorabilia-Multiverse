@@ -1,36 +1,39 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router';
+import React, { useContext, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
 import API from '../../utils/API';
+import CartContext from '../../utils/CartContext';
+import { Container, Card, Button } from 'react-bootstrap';
 
 const ProductPage = () => {
+    const cart = useContext(CartContext);
     const [item, setItem] = useState([]);
     const { ItemId } = useParams();
 
     useEffect(() => {
         API.getOneItem(ItemId)
-            .then(response => setItem(response.data))
+            .then(item => setItem(item))
     }, [ItemId])
 
     return (
         <div>
-            <div className="container">
-                <div className="title">{item.product_name}</div>
-                <div className="grid">
-                    <img src={item.image_link} className="image" alt="Product"></img>
-                    <div className="row">
-                        <div className="info">
-                            <div className="price">Price:{' '}{item.fake_price}</div>
-                            <div>Stock:{' '}{item.fake_quantity} </div>
-                            <div>Sold:{' '}{item.fake_sold} </div>
-                        </div>
-                    </div>
-                    <div className="description">{item.fun_description}</div>
-                    <div className="row">
-                            {/* <button onClick={() => cart.addItem(item)}>Add to Cart</button> */}
-                            <button type='submit'>Add to Cart</button>
-                    </div>
-                </div>
-            </div>
+            <Container className="container d-flex justify-content-center">
+                <Card className='product-card' style={{ width: '18rem' }}>
+                    <Card.Title>{item.product_name}</Card.Title>
+                    <Card.Img variant="top" src={item.image_link} />
+                    <Card.Body>
+                        <Card.Text>
+                            Price: ${item.fake_price}
+                        </Card.Text>
+                        <Card.Text>
+                            Stock: {item.fake_quantity}
+                        </Card.Text>
+                        <Card.Text>
+                            Sold: {item.fake_sold}
+                        </Card.Text>
+                        <Button className='btn btn-primary' onClick={() => cart.addItem(item)} >Add To Cart</Button>
+                    </Card.Body>
+                </Card>
+            </Container>
         </div>
     )
 }

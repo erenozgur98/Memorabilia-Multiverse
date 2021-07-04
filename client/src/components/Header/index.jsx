@@ -19,9 +19,19 @@ function Header({ user, handleLogout }) {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className='ml-auto navbar'>
+                            <Nav.Link className='nav-link'>
+                                <div className="navLinks">
+                                    Hey there, {user.username}
+                                </div>
+                            </Nav.Link>
                             <Nav.Link as={Link} to='/shop' className='nav-link'>
                                 <div className="navLinks">
                                     Shop
+                                </div>
+                            </Nav.Link>
+                            <Nav.Link as={Link} to='/cart' className='nav-link'>
+                                <div className="navLinks">
+                                    Cart
                                 </div>
                             </Nav.Link>
                             <Nav.Link as={Link} to='/' className='nav-link' onClick={handleLogout}>
@@ -48,6 +58,11 @@ function Header({ user, handleLogout }) {
                             <Nav.Link as={Link} to='/shop' className='nav-link'>
                                 <div className="navLinks">
                                     Shop
+                                </div>
+                            </Nav.Link>
+                            <Nav.Link as={Link} to='/cart' className='nav-link'>
+                                <div className="navLinks">
+                                    Cart
                                 </div>
                             </Nav.Link>
                             <Nav.Link as={Link} to='/login' className='nav-link'>

@@ -36,6 +36,10 @@ export default {
     },
 
     getOneItem: (itemId) => {
-        return axios.get('/api/procuts/' + itemId)
-    }
+        return axios.get('/api/products/' + itemId)
+    },
+
+    create: (body) => {
+        return axios.post('/api/transactions', { product_id: body.id, franchise_id: body.franchise_id, user_id: body.user_id, price: parseFloat(body.fake_price), quantity: 1 });
+    },
 }

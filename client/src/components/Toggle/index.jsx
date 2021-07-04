@@ -14,13 +14,14 @@ const Toggle = (props) => {
     };
 
     const something = () => {
-        
+        // just to fix console error
     };
 
     return (
         <div>
             <Container>
                     <Form.Check
+                        inline
                         type='radio'
                         id={props.id}
                         label={props.name}
