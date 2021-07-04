@@ -6,8 +6,7 @@ import Shop from './pages/Shop';
 import Header from './components/Header';
 import { useEffect, useState } from 'react';
 import API from './utils/API';
-import WithAuth from './components/WithAuth';
-import Toggle from './components/Toggle';
+// import WithAuth from './components/WithAuth';
 
 function App() {
   const [user, setUser] = useState({});

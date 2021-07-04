@@ -22,4 +22,16 @@ export default {
     getAllUsers: () => {
         return axios.get('/api/users');
     },
+
+    getOneFranchise: (franchiseId) => {
+        return axios.get('/api/products/fran/' + franchiseId)
+    },
+
+    getAll: () => {
+        return axios.get('/api/products/')
+    },
+
+    getFranchises: () => {
+        return axios.get('/api/franchise');
+    },
 }
