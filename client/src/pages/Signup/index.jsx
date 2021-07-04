@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import API from '../../utils/API';
 import { Container } from 'react-bootstrap';
-import { Redirect, useHistory } from 'react-router';
+import { Redirect } from 'react-router';
 
 function SignUp({ setUser, user }) {
     const [redirect, setRedirect] = useState(false);
-    const history = useHistory();
 
     const email = useRef();
     const username = useRef();
@@ -24,7 +23,7 @@ function SignUp({ setUser, user }) {
             delete newUser.data.password;
             setUser(newUser);
             setRedirect(true);
-            // history.push('/');
+            window.location.reload();
         } catch (err) {
             console.log('SignUp error: ', err);
         }

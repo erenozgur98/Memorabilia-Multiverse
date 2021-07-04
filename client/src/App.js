@@ -6,8 +6,7 @@ import Shop from './pages/Shop';
 import Header from './components/Header';
 import { useEffect, useState } from 'react';
 import API from './utils/API';
-import Toggle from './components/Toggle';
-import ToggleContainer from './components/Toggle-Container';
+import ProductPage from './pages/ProductPage';
 // import WithAuth from './components/WithAuth';
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
   useEffect(() => {
     API.loggedIn()
       .then(result => {
-        console.log('useEffect console log line 17: ', result.data)
         setUser(result.data);
         setLoaded(true);
       })
@@ -29,7 +27,6 @@ function App() {
   }, []);
 
   const handleLogout = () => {
-    console.log('logged out')
     setUser({});
     API.logOut();
   };
@@ -43,6 +40,9 @@ function App() {
             <Route exact path='/' component={Shop} />
             <Route exact path='/shop' component={Shop} />
             <Route exact path='/shop/:id' component={Shop} />
+            <Route exact path='/products/:ItemId'
+              render={(props) => <ProductPage {...props} user={user} />}
+            />
             <Route exact path='/login' render={(props) => <Login {...props}
               loggedIn={loggedIn}
               setLoggedIn={setLoggedIn}

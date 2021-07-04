@@ -24,14 +24,18 @@ export default {
     },
 
     getOneFranchise: (franchiseId) => {
-        return axios.get('/api/products/fran/' + franchiseId)
+        return axios.get('/api/products/' + franchiseId)
     },
 
     getAll: () => {
-        return axios.get('/api/products/')
+        return axios.get('/api/products')
     },
 
     getFranchises: () => {
         return axios.get('/api/franchise');
     },
+
+    getOneItem: (itemId) => {
+        return axios.get('/api/procuts/' + itemId)
+    }
 }

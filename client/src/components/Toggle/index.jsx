@@ -13,6 +13,10 @@ const Toggle = (props) => {
         }
     };
 
+    const something = () => {
+        
+    };
+
     return (
         <div>
             <Container>
@@ -21,6 +25,7 @@ const Toggle = (props) => {
                         id={props.id}
                         label={props.name}
                         checked={props.franchiseSelected === props.id}
+                        onChange={something}
                         onClick={() => changeFranchise(props.id)}
                     />
             </Container>

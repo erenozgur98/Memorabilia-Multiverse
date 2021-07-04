@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { useParams } from 'react-router';
+import Cards from '../../components/Card';
 import ToggleContainer from '../../components/Toggle-Container';
 import API from '../../utils/API';
 
@@ -29,7 +30,7 @@ function Shop() {
         <Container>
             <ToggleContainer franchiseSelected={franchise} />
             {itemList.map((item, i) => (
-                <Card key={i} {...item} />
+                <Cards key={i} {...item} />
             ))}
         </Container>
     )
