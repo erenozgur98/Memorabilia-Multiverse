@@ -42,8 +42,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={Shop} />
             <Route exact path='/shop' component={Shop} />
-            <Route exact path='/asdf' component={Toggle} />
-            <Route exact path='/asdfg' component={ToggleContainer} />
+            <Route exact path='/shop/:id' component={Shop} />
             <Route exact path='/login' render={(props) => <Login {...props}
               loggedIn={loggedIn}
               setLoggedIn={setLoggedIn}
