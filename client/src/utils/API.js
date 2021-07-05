@@ -24,7 +24,7 @@ export default {
     },
 
     getOneFranchise: (franchiseId) => {
-        return axios.get('/api/products/' + franchiseId)
+        return axios.get('/api/products/fran/' + franchiseId)
     },
 
     getAll: () => {

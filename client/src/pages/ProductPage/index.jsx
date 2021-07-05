@@ -6,16 +6,17 @@ import { Container, Card, Button } from 'react-bootstrap';
 
 const ProductPage = () => {
     const cart = useContext(CartContext);
-    const [item, setItem] = useState([]);
+    const [item, setItem] = useState({});
     const { ItemId } = useParams();
 
     useEffect(() => {
         API.getOneItem(ItemId)
-            .then(item => setItem(item))
+            .then(item => setItem(item.data))
     }, [ItemId])
 
     return (
         <div>
+            {console.log(item)}
             <Container className="container d-flex justify-content-center">
                 <Card className='product-card' style={{ width: '18rem' }}>
                     <Card.Title>{item.product_name}</Card.Title>
