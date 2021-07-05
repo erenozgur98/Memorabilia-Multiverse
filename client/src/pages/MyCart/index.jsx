@@ -3,6 +3,10 @@ import API from '../../utils/API';
 import CartContext from '../../utils/CartContext';
 import { Redirect } from "react-router";
 import { Container, Card, Button } from 'react-bootstrap';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 const MyCart = ({ user }) => {
     const cart = useContext(CartContext)
@@ -19,26 +23,36 @@ const MyCart = ({ user }) => {
 
         setCartTotal(total);
 
-    }, [cart])
+    }, [cart]);
 
     const handleCheckOut = async (e) => {
         e.preventDefault();
 
         if (!user.username) return setRedirect(true);
 
-        // if (!cart.items.length) {
-        //     toast.warn('There are no items in your cart!', {
-        //         autoClose: 2500
-        //     });
-        // } else {
-        //     toast.info('Checkout has been successfull!', {
-        //         autoClose: 2500
-        //     });
-        //     localStorage.clear();
-        //     setTimeout(() => {
-        //         window.location.reload()
-        //     }, 2500)
-        // }
+        if (!cart.items.length) {
+            toast.warn('There are no items in your cart!', {
+                position: 'top-right',
+                autoClose: 2500,
+                closeOnClick: true,
+                draggable: true,
+                pauseOnHover: true,
+                hideProgressBar: false,
+            });
+        } else {
+            toast.info('Checkout has been successfull!', {
+                position: 'top-right',
+                autoClose: 2500,
+                closeOnClick: true,
+                draggable: true,
+                pauseOnHover: true,
+                hideProgressBar: false,
+            });
+            localStorage.clear();
+            setTimeout(() => {
+                window.location.reload()
+            }, 2500)
+        }
 
         try {
             const purchaseArr = cart.items.map((item) => item)
@@ -53,14 +67,23 @@ const MyCart = ({ user }) => {
     }
 
     const emptyCart = () => {
-        localStorage.clear();
-        window.location.reload();
-    }
+        toast.info('Clearing cart', {
+            setTimeout: 1500,
+            closeOnClick: true,
+            draggable: true,
+            pauseOnHover: true,
+            hideProgressBar: true,
+        });
+        setTimeout(() => {
+            localStorage.clear();
+            window.location.reload();
+        }, 1520)
+    };
 
     return (
         <div>
+            {redirect && <Redirect to='/login' />}
             <Container className='d-flex justify-content-center'>
-                {redirect && <Redirect to='/login' />}
                 <Card className='cart' style={{ width: '118rem', height: '30rem' }}>
                     <Card.Body className='card-body'>
                         <Card.Title>My Cart</Card.Title>

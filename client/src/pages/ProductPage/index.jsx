@@ -3,6 +3,10 @@ import { useParams } from 'react-router-dom';
 import API from '../../utils/API';
 import CartContext from '../../utils/CartContext';
 import { Container, Card, Button } from 'react-bootstrap';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 const ProductPage = () => {
     const cart = useContext(CartContext);
@@ -12,7 +16,15 @@ const ProductPage = () => {
     useEffect(() => {
         API.getOneItem(ItemId)
             .then(item => setItem(item.data))
-    }, [ItemId])
+    }, [ItemId]);
+
+    const addToCart = () => {
+        toast.info('The item has been added to the cart!', {
+            
+            autoClose: 2500,
+            
+        });
+    };
 
     return (
         <div>
@@ -30,7 +42,15 @@ const ProductPage = () => {
                         <Card.Text>
                             Sold: {item.fake_sold}
                         </Card.Text>
-                        <Button className='btn btn-primary' onClick={() => cart.addItem(item)} >Add To Cart</Button>
+                        <Button
+                            className='btn btn-primary'
+                            onClick={() => {
+                                addToCart()
+                                cart.addItem(item)
+                            }}
+                        >
+                            Add To Cart
+                        </Button>
                     </Card.Body>
                 </Card>
             </Container>
