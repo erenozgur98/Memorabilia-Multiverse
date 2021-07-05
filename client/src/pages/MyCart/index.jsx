@@ -66,18 +66,21 @@ const MyCart = ({ user }) => {
     }
 
     const emptyCart = () => {
-        window.alert('Are you sure?')
-        toast.info('Clearing cart', {
-            setTimeout: 1500,
-            closeOnClick: true,
-            draggable: true,
-            pauseOnHover: true,
-            hideProgressBar: true,
-        });
-        setTimeout(() => {
-            localStorage.clear();
-            window.location.reload();
-        }, 1520)
+        let confirm = window.confirm('Are you sure to clear your cart?')
+
+        if (confirm) {
+            toast.info('Clearing cart', {
+                setTimeout: 1500,
+                closeOnClick: true,
+                draggable: true,
+                pauseOnHover: true,
+                hideProgressBar: true,
+            });
+            setTimeout(() => {
+                localStorage.clear();
+                window.location.reload();
+            }, 1520)
+        }
     };
 
     return (
