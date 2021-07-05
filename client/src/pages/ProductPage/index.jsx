@@ -16,7 +16,6 @@ const ProductPage = () => {
 
     return (
         <div>
-            {console.log(item)}
             <Container className="container d-flex justify-content-center">
                 <Card className='product-card' style={{ width: '18rem' }}>
                     <Card.Title>{item.product_name}</Card.Title>

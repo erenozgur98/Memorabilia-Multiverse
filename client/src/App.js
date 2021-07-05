@@ -15,6 +15,7 @@ function App() {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [, setLoaded] = useState(false);
+  
   const [cart, setCart] = useState({
     items: [],
     addItem: (item) => setCart((curr) => {
