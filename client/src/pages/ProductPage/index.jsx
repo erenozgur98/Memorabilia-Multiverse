@@ -34,6 +34,9 @@ const ProductPage = () => {
                     <Card.Img variant="top" src={item.image_link} />
                     <Card.Body>
                         <Card.Text>
+                            {item.fun_description}
+                        </Card.Text>
+                        <Card.Text>
                             Price: ${item.fake_price}
                         </Card.Text>
                         <Card.Text>
