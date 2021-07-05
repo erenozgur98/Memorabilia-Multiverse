@@ -20,8 +20,8 @@ const Toggle = (props) => {
     return (
         <div>
             <Container>
+                <Form>
                     <Form.Check
-                        inline
                         type='radio'
                         id={props.id}
                         label={props.name}
@@ -29,6 +29,7 @@ const Toggle = (props) => {
                         onChange={something}
                         onClick={() => changeFranchise(props.id)}
                     />
+                </Form>
             </Container>
         </div >
     )

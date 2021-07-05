@@ -21,7 +21,7 @@ function Header({ user, handleLogout }) {
                         <Nav className='ml-auto navbar'>
                             <Nav.Link className='nav-link'>
                                 <div className="navLinks">
-                                    Hey there, {user.username}
+                                    Welcome, {user.username}
                                 </div>
                             </Nav.Link>
                             <Nav.Link as={Link} to='/shop' className='nav-link'>

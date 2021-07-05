@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import API from '../../utils/API';
 import CartContext from '../../utils/CartContext';
 import { Redirect } from "react-router";
+import { Container, Card, Button } from 'react-bootstrap';
 
 const MyCart = ({ user }) => {
     const cart = useContext(CartContext)
@@ -9,7 +10,6 @@ const MyCart = ({ user }) => {
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
-        console.log(cart);
         let total = 0;
         if (!cart.items.length) return;
 
@@ -58,15 +58,24 @@ const MyCart = ({ user }) => {
     }
 
     return (
-        <div className='cart'>
-            {redirect && <Redirect to='/login' />}
-            <h1>My Cart</h1>
-            {cart.items.map((item, i) => (
-                <p>{item.product_name} = ${item.fake_price}</p>
-            ))}
-            <h3>Total: ${parseFloat(cartTotal)}</h3>
-            <button className='btn btn-primary' onClick={handleCheckOut}>Checkout</button>
-            <button className='btn btn-primary' onClick={emptyCart}>Empty Cart</button>
+        <div>
+            <Container className='d-flex justify-content-center'>
+                {redirect && <Redirect to='/login' />}
+                <Card className='cart' style={{ width: '118rem', height: '30rem' }}>
+                    <Card.Body className='card-body'>
+                        <Card.Title>My Cart</Card.Title>
+                        <Card.Text>
+                            {cart.items.map((item) => (
+                                <p>{item.product_name} = ${item.fake_price}</p>
+                            ))}
+                        </Card.Text>
+                        <Card.Text>Total: ${parseFloat(cartTotal)}</Card.Text>
+                        <Button onClick={handleCheckOut}>Checkout</Button>
+                        {' '}
+                        <Button onClick={emptyCart}>Empty Cart</Button>
+                    </Card.Body>
+                </Card>
+            </Container>
         </div>
     )
 }
