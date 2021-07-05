@@ -56,7 +56,6 @@ const MyCart = ({ user }) => {
 
         try {
             const purchaseArr = cart.items.map((item) => item)
-            console.log(purchaseArr);
 
             for (let i = 0; i < purchaseArr.length; i++) {
                 API.create(purchaseArr[i]);
@@ -84,7 +83,7 @@ const MyCart = ({ user }) => {
         <div>
             {redirect && <Redirect to='/login' />}
             <Container className='d-flex justify-content-center'>
-                <Card className='cart' style={{ width: '118rem', height: '30rem' }}>
+                <Card className='cart' style={{ width: '118rem', height: '30rem', textAlign: 'center' }}>
                     <Card.Body className='card-body'>
                         <Card.Title>My Cart</Card.Title>
                         <Card.Text>

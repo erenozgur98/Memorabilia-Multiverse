@@ -1,28 +1,50 @@
-import React from 'react'
-import { Container, Card } from 'react-bootstrap';
-import { useHistory } from 'react-router';
+import React, { useContext, useState } from 'react'
+import { Container, Card, Button } from 'react-bootstrap';
+import { useHistory, } from 'react-router';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import API from '../../utils/API';
+import CartContext from '../../utils/CartContext';
+
+toast.configure();
 
 const Cards = ({ image_link, product_name, fake_price, fake_quantity, fake_sold, id, description }) => {
+    const cart = useContext(CartContext);
+    const [item, setItem] = useState([]);
+
     const history = useHistory();
+
     const redirect = () => {
         history.push(`/products/${id}`)
     }
 
+    const addToCart = () => {
+        API.getOneItem(id)
+            .then(item => setItem(item.data))
+            // .then(item => setItem(item.data))
+        // toast.info('The item has been added to your cart!', {
+        //     autoClose: 2500,
+        // });
+    };
+
     return (
-        <Container onClick={redirect}>
+        <Container>
             <Card.Title>{product_name}</Card.Title>
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={image_link !== '-' ? image_link : 'https://via.placeholder.com/160'} />
+                <Card.Img onClick={redirect} variant="top" src={image_link !== '-' ? image_link : 'https://via.placeholder.com/160'} />
                 <Card.Body>
                     <Card.Text>
                         Price: ${fake_price}
                     </Card.Text>
-                    <Card.Text>
-                        Stock: {fake_quantity}
-                    </Card.Text>
-                    <Card.Text>
-                        Sold: {fake_sold}
-                    </Card.Text>
+                    <Button
+                        className='btn btn-primary'
+                        onClick={() => {
+                            addToCart()
+                            cart.addItem(item)
+                        }}
+                    >
+                        Add To Cart
+                    </Button>
                 </Card.Body>
             </Card>
         </Container>

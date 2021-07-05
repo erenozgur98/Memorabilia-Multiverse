@@ -15,11 +15,14 @@ const ProductPage = () => {
 
     useEffect(() => {
         API.getOneItem(ItemId)
-            .then(item => setItem(item.data))
+            .then(item => {
+                console.log(item.data)
+                setItem(item.data)
+            })
     }, [ItemId]);
 
     const addToCart = () => {
-        toast.info('The item has been added to the cart!', {
+        toast.info('The item has been added to your cart!', {
             autoClose: 2500,
         });
     };
@@ -27,7 +30,7 @@ const ProductPage = () => {
     return (
         <div>
             <Container className="container d-flex justify-content-center">
-                <Card className='product-card' style={{ width: '18rem' }}>
+                <Card className='product-card' style={{ width: '18rem', textAlign: 'center' }}>
                     <Card.Title>{item.product_name}</Card.Title>
                     <Card.Img variant="top" src={item.image_link} />
                     <Card.Body>
@@ -35,14 +38,14 @@ const ProductPage = () => {
                             {item.fun_description}
                         </Card.Text>
                         <Card.Text>
-                            Price: ${item.fake_price}
+                            ${item.fake_price}
                         </Card.Text>
-                        <Card.Text>
+                        {/* <Card.Text>
                             Stock: {item.fake_quantity}
                         </Card.Text>
                         <Card.Text>
                             Sold: {item.fake_sold}
-                        </Card.Text>
+                        </Card.Text> */}
                         <Button
                             className='btn btn-primary'
                             onClick={() => {
