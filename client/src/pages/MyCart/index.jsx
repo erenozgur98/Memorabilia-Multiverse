@@ -86,25 +86,35 @@ const MyCart = ({ user }) => {
     return (
         <div>
             {redirect && <Redirect to='/login' />}
-            <Container className='d-flex justify-content-center'>
-                <Card className='cart' style={{ width: '118rem', height: '30rem', textAlign: 'center' }}>
-                    <Card.Body className='card-body'>
-                        <Card.Title>My Cart</Card.Title>
-                        <Card.Text className='d-flex justify-content-center'>
-                            {cart.items.map((item) => (
-                                <Card style={{ width: '15rem', alignItems: 'center' }}>
-                                    <Card.Img variant="top" src={item.image_link} style={{ width: '110px', height: '110px' }} />
-                                    <div>{item.product_name}</div>
-                                    <p>${item.fake_price}</p>
-                                </Card>
-                            ))}
-                        </Card.Text>
-                        <Card.Text>Total: ${parseFloat(cartTotal)}</Card.Text>
-                        <Button onClick={handleCheckOut}>Checkout</Button>
-                        {' '}
-                        <Button onClick={emptyCart}>Empty Cart</Button>
-                    </Card.Body>
-                </Card>
+            <Container className='d-flex justify-content-center' style={{ textAlign: 'center' }}>
+                <Card.Body className='card-body'>
+                    <Card.Title style={{ borderBottom: 'solid 1px black' }}><span>My Cart</span></Card.Title>
+                    <Card.Text className='d-flex justify-content-center' style={{ flexWrap: 'wrap' }}>
+                        {cart.items.map((item) => (
+                            <Card style={{ width: '15rem', alignItems: 'center', margin: '8px' }}>
+                                <Card.Img
+                                    variant="top"
+                                    src={item.image_link}
+                                    style={{ width: '110px', height: '110px' }}
+                                />
+                                <div>{item.product_name}</div>
+                                <p>${item.fake_price}</p>
+                            </Card>
+                        ))}
+                    </Card.Text>
+                    <Card.Text>Total: ${parseFloat(cartTotal)}</Card.Text>
+                    <Button onClick={handleCheckOut}>Checkout</Button>
+                    {' '}
+                    <Button onClick={emptyCart}>Empty Cart</Button>
+                </Card.Body>
+            </Container>
+            <Container>
+                <Button
+                    href='/'
+                    className='d-flex justify-content-center'
+                >
+                    Return To Shop
+                </Button>
             </Container>
         </div>
     )
