@@ -2,6 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import API from '../../utils/API';
 import { Container } from 'react-bootstrap';
 import { Redirect } from 'react-router';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 function Login({ setUser, user }) {
     const [redirect, setRedirect] = useState(false);

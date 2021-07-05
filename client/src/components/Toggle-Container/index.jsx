@@ -12,7 +12,7 @@ function ToggleContainer({ franchiseSelected }) {
     }, [])
 
     return (
-        <Container>
+        <Container className='d-flex justify-content-center'>
             {franchiseData.map((franchise) =>
                 <Toggle
                     key={franchise.id}

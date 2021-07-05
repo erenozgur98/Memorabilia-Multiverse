@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Form } from 'react-bootstrap'
+import { Container, Button } from 'react-bootstrap'
 import { useHistory } from 'react-router'
 
 const Toggle = (props) => {
@@ -13,23 +13,16 @@ const Toggle = (props) => {
         }
     };
 
-    const something = () => {
-        // just to fix console error
-    };
-
     return (
         <div>
             <Container>
-                <Form>
-                    <Form.Check
-                        type='radio'
-                        id={props.id}
-                        label={props.name}
-                        checked={props.franchiseSelected === props.id}
-                        onChange={something}
-                        onClick={() => changeFranchise(props.id)}
-                    />
-                </Form>
+                <Button
+                    className='btn btn-warning'
+                    id={props.id}
+                    onClick={() => changeFranchise(props.id)}
+                >
+                    {props.name}
+                </Button>
             </Container>
         </div >
     )

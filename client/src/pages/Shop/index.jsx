@@ -27,7 +27,7 @@ function Shop() {
     }, [id]);
 
     return (
-        <Container>
+        <Container style={{ textAlign: 'center' }}>
             <ToggleContainer franchiseSelected={franchise} />
             <div className="row cardStyle">
                 {itemList.map((item, i) => (

@@ -20,9 +20,7 @@ const ProductPage = () => {
 
     const addToCart = () => {
         toast.info('The item has been added to the cart!', {
-            
             autoClose: 2500,
-            
         });
     };
 
