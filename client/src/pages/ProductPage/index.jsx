@@ -16,7 +16,6 @@ const ProductPage = () => {
     useEffect(() => {
         API.getOneItem(ItemId)
             .then(item => {
-                console.log(item.data)
                 setItem(item.data)
             })
     }, [ItemId]);

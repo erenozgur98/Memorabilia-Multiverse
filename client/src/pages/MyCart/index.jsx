@@ -88,7 +88,10 @@ const MyCart = ({ user }) => {
                         <Card.Title>My Cart</Card.Title>
                         <Card.Text>
                             {cart.items.map((item) => (
-                                <p>{item.product_name} = ${item.fake_price}</p>
+                                <div className=''>
+                                    <Card.Img variant="top" src={item.image_link} style={{ width: '110px', height: '110px' }} />
+                                    <p>{item.product_name} = ${item.fake_price}</p>
+                                </div>
                             ))}
                         </Card.Text>
                         <Card.Text>Total: ${parseFloat(cartTotal)}</Card.Text>

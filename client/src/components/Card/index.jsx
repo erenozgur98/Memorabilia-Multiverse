@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Container, Card, Button } from 'react-bootstrap';
 import { useHistory, } from 'react-router';
 import { toast } from 'react-toastify';
@@ -10,21 +10,31 @@ toast.configure();
 
 const Cards = ({ image_link, product_name, fake_price, fake_quantity, fake_sold, id, description }) => {
     const cart = useContext(CartContext);
-    const [item, setItem] = useState([]);
+    const [item, setItem] = useState({});
 
     const history = useHistory();
+
+    useEffect(() => {
+        // find another way to add to cart without useEffect
+        API.getOneItem(id)
+        .then(item => {
+            setItem(item.data)
+        })   
+    }, [id])
 
     const redirect = () => {
         history.push(`/products/${id}`)
     }
 
     const addToCart = () => {
-        API.getOneItem(id)
-            .then(item => setItem(item.data))
-            // .then(item => setItem(item.data))
-        // toast.info('The item has been added to your cart!', {
-        //     autoClose: 2500,
-        // });
+        // API.getOneItem(id)
+        //     .then(item => {
+        //         console.log(item.data)
+        //         setItem(item.data)
+        //     })
+        toast.info('The item has been added to your cart!', {
+            autoClose: 2500,
+        });
     };
 
     return (
