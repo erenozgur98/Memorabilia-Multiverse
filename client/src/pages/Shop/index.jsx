@@ -36,7 +36,6 @@ function Shop() {
                 .then((list) => {
                     setItemList(list.data)
                     setFranchise(parseInt(id))
-                    console.log(list.data, id)
                 });
         } else {
             API.getAll()

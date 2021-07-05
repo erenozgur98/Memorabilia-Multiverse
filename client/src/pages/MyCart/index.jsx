@@ -66,6 +66,7 @@ const MyCart = ({ user }) => {
     }
 
     const emptyCart = () => {
+        window.alert('Are you sure?')
         toast.info('Clearing cart', {
             setTimeout: 1500,
             closeOnClick: true,
@@ -86,12 +87,13 @@ const MyCart = ({ user }) => {
                 <Card className='cart' style={{ width: '118rem', height: '30rem', textAlign: 'center' }}>
                     <Card.Body className='card-body'>
                         <Card.Title>My Cart</Card.Title>
-                        <Card.Text>
+                        <Card.Text className='d-flex justify-content-center'>
                             {cart.items.map((item) => (
-                                <div className=''>
+                                <Card style={{ width: '15rem', alignItems: 'center' }}>
                                     <Card.Img variant="top" src={item.image_link} style={{ width: '110px', height: '110px' }} />
-                                    <p>{item.product_name} = ${item.fake_price}</p>
-                                </div>
+                                    <div>{item.product_name}</div>
+                                    <p>${item.fake_price}</p>
+                                </Card>
                             ))}
                         </Card.Text>
                         <Card.Text>Total: ${parseFloat(cartTotal)}</Card.Text>

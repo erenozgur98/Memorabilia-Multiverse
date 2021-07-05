@@ -11,7 +11,7 @@ function Header({ user, handleLogout }) {
                 <Navbar
                     collapseOnSelect
                     expand='lg'
-                    variant='dark'
+                    variant='light'
                     sticky='top'
                     className='navColor1'
                 >
@@ -21,11 +21,9 @@ function Header({ user, handleLogout }) {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className='ml-auto navbar'>
-                            <Nav.Link className='nav-link'>
-                                <div className="navLinks">
-                                    Welcome, {user.username}
-                                </div>
-                            </Nav.Link>
+                            <div style={{ paddingRight: '12px' }}>
+                                Welcome, {user.username}
+                            </div>
                             <Nav.Link as={Link} to='/shop' className='nav-link'>
                                 <div className="navLinks">
                                     Shop

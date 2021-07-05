@@ -2,3 +2,7 @@
     /* border-bottom: solid #131313 2px; */
     margin-bottom: 36px;
 }
+
+.navLinks {
+    border-bottom: 1px solid black;
+}
