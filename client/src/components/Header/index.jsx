@@ -1,17 +1,19 @@
 import React from 'react'
 import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './index.css';
 
 function Header({ user, handleLogout }) {
 
     return (
-        <>
+        <div className='main-nav'>
             {user.username ? (
                 <Navbar
                     collapseOnSelect
                     expand='lg'
                     variant='dark'
                     sticky='top'
+                    className='navColor1'
                 >
                     <NavbarBrand as={Link} className='navbar-brand' to='/'>
                         <p>Memorabilia Multiverse</p>
@@ -74,7 +76,7 @@ function Header({ user, handleLogout }) {
                     </Navbar.Collapse>
                 </Navbar>
             )}
-        </>
+        </div>
     )
 }
 

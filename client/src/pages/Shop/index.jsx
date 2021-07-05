@@ -6,9 +6,29 @@ import ToggleContainer from '../../components/Toggle-Container';
 import API from '../../utils/API';
 
 function Shop() {
+    const [franchiseName, setFranchiseName] = useState('');
     const [franchise, setFranchise] = useState(0);
     const [itemList, setItemList] = useState([]);
     const { id } = useParams();
+
+    useEffect(() => {
+        API.getOneFranchise(id)
+            .then(() => {
+                if (id === '1') {
+                    setFranchiseName('Seinfeld')
+                } else if (id === '2') {
+                    setFranchiseName('Rick and Morty')
+                } else if (id === '3') {
+                    setFranchiseName('Home Improvement')
+                } else if (id === '4') {
+                    setFranchiseName('Family Guy')
+                } else if (id === '5') {
+                    setFranchiseName('The Office')
+                } else {
+                    setFranchiseName('All')
+                }
+            })
+    }, [id])
 
     useEffect(() => {
         if (id) {
@@ -16,6 +36,7 @@ function Shop() {
                 .then((list) => {
                     setItemList(list.data)
                     setFranchise(parseInt(id))
+                    console.log(list.data, id)
                 });
         } else {
             API.getAll()
@@ -28,11 +49,15 @@ function Shop() {
 
     return (
         <Container style={{ textAlign: 'center' }}>
+            <h1 style={{ paddingBottom: '12px' }}><span style={{ borderBottom: '3px solid black' }}>Shows</span></h1>
             <ToggleContainer franchiseSelected={franchise} />
+            <h1 className='' style={{ textAlign: 'center', paddingTop: '12px', borderBottom: '3px solid black' }}>Products ({franchiseName}) </h1>
             <div className="row cardStyle">
                 {itemList.map((item, i) => (
-                    <div className="col-sm-4">
-                        <Cards key={i} {...item} />
+                    <div className="row d-flex justify-content-center" style={{ paddingBottom: '12px', paddingTop: '12px' }}>
+                        <div className="col-sm-4">
+                            <Cards key={i} {...item} />
+                        </div>
                     </div>
                 ))}
             </div>

@@ -32,6 +32,7 @@
     "mysql2": "^2.2.5",
     "namor": "^2.0.2",
     "react-bootstrap": "^1.5.2",
+    "react-particles-js": "^3.5.3",
     "react-select": "^4.3.0",
     "react-shopping-cart": "^1.9.5",
     "react-table": "^7.6.3",

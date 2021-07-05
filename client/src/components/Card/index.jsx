@@ -17,9 +17,9 @@ const Cards = ({ image_link, product_name, fake_price, fake_quantity, fake_sold,
     useEffect(() => {
         // find another way to add to cart without useEffect
         API.getOneItem(id)
-        .then(item => {
-            setItem(item.data)
-        })   
+            .then(item => {
+                setItem(item.data)
+            })
     }, [id])
 
     const redirect = () => {
@@ -27,11 +27,6 @@ const Cards = ({ image_link, product_name, fake_price, fake_quantity, fake_sold,
     }
 
     const addToCart = () => {
-        // API.getOneItem(id)
-        //     .then(item => {
-        //         console.log(item.data)
-        //         setItem(item.data)
-        //     })
         toast.info('The item has been added to your cart!', {
             autoClose: 2500,
         });
@@ -39,10 +34,10 @@ const Cards = ({ image_link, product_name, fake_price, fake_quantity, fake_sold,
 
     return (
         <Container>
-            <Card.Title>{product_name}</Card.Title>
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '14rem' }}>
                 <Card.Img onClick={redirect} variant="top" src={image_link !== '-' ? image_link : 'https://via.placeholder.com/160'} />
                 <Card.Body>
+                    <Card.Title>{product_name}</Card.Title>
                     <Card.Text>
                         Price: ${fake_price}
                     </Card.Text>

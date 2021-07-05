@@ -39,12 +39,6 @@ const ProductPage = () => {
                         <Card.Text>
                             ${item.fake_price}
                         </Card.Text>
-                        {/* <Card.Text>
-                            Stock: {item.fake_quantity}
-                        </Card.Text>
-                        <Card.Text>
-                            Sold: {item.fake_sold}
-                        </Card.Text> */}
                         <Button
                             className='btn btn-primary'
                             onClick={() => {

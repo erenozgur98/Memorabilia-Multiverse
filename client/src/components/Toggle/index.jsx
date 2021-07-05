@@ -17,7 +17,7 @@ const Toggle = (props) => {
         <div>
             <Container>
                 <Button
-                    className='btn btn-warning'
+                    className='btn btn-success'
                     id={props.id}
                     onClick={() => changeFranchise(props.id)}
                 >
