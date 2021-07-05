@@ -48,9 +48,9 @@ function Shop() {
 
     return (
         <Container style={{ textAlign: 'center' }}>
-            <h1 style={{ paddingBottom: '12px' }}><span style={{ borderBottom: '3px solid black' }}>Shows</span></h1>
+            <h2 style={{ paddingBottom: '12px' }}><span style={{ borderBottom: '3px solid black' }}>Shows</span></h2>
             <ToggleContainer franchiseSelected={franchise} />
-            <h1 className='' style={{ textAlign: 'center', paddingTop: '12px', borderBottom: '3px solid black' }}>Products ({franchiseName}) </h1>
+            <h2 className='' style={{ textAlign: 'center', paddingTop: '12px', borderBottom: '3px solid black' }}>Products ({franchiseName}) </h2>
             <div className="row cardStyle">
                 {itemList.map((item, i) => (
                     <div className="row d-flex justify-content-center" style={{ paddingBottom: '12px', paddingTop: '12px' }}>

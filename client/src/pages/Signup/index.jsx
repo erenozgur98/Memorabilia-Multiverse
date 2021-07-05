@@ -32,15 +32,18 @@ function SignUp({ setUser, user }) {
     return (
         <Container>
             {redirect && <Redirect to='/' />}
-            {/* <h1 className='d-flex justify-content-center'>Memorabilia Multiverse</h1> */}
+            <h1 style={{ textAlign: 'center', borderBottom: '1px solid black'}}>Sign Up</h1>
             <form className="px-4 py-3">
                 <div className="form-group">
+                <label className="form-label">Email</label>
                     <input type="email" className="form-control" ref={email} placeholder="email@example.com" />
                 </div>
                 <div className="form-group">
+                <label className="form-label">Username</label>
                     <input type="text" name="username" placeholder="username" className='form-control' ref={username} />
                 </div>
                 <div className="form-group">
+                <label className="form-label">Password</label>
                     <input type="password" name="password" placeholder="password" className='form-control' ref={password} />
                 </div>
                 <button className='btn btn-primary btn-block' onClick={signupHandler}>Signup</button>
