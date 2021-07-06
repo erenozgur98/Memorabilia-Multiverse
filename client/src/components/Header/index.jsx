@@ -11,9 +11,8 @@ function Header({ user, handleLogout }) {
                 <Navbar
                     collapseOnSelect
                     expand='lg'
-                    variant='light'
+                    variant='dark'
                     sticky='top'
-                    className='navColor1'
                 >
                     <NavbarBrand as={Link} className='navbar-brand' to='/'>
                         <p>Memorabilia Multiverse</p>

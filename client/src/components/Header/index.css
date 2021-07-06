@@ -1,6 +1,8 @@
 .main-nav {
     /* border-bottom: solid #131313 2px; */
     margin-bottom: 36px;
+    background-color: #131313;
+    color: white;
 }
 
 .navLinks {
