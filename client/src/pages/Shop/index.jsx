@@ -28,7 +28,7 @@ function Shop() {
                     setFranchiseName('All')
                 }
             })
-    }, [id])
+    }, [id]);
 
     useEffect(() => {
         if (id) {
@@ -50,7 +50,7 @@ function Shop() {
         <Container style={{ textAlign: 'center' }}>
             <h2 style={{ paddingBottom: '12px' }}><span style={{ borderBottom: '3px solid black' }}>Shows</span></h2>
             <ToggleContainer franchiseSelected={franchise} />
-            <h2 className='' style={{ textAlign: 'center', paddingTop: '12px', borderBottom: '3px solid black' }}>Products ({franchiseName}) </h2>
+            <h2 style={{ textAlign: 'center', paddingTop: '12px', borderBottom: '3px solid black' }}>Products ({franchiseName}) </h2>
             <div className="row cardStyle">
                 {itemList.map((item, i) => (
                     <div className="row d-flex justify-content-center" style={{ paddingBottom: '12px', paddingTop: '12px' }}>
