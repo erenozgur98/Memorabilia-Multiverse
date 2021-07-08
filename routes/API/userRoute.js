@@ -62,8 +62,12 @@ router.post('/signup', async (req, res) => {
         } else {
             const newUser = await User.create(req.body);
             delete newUser.password;
+
+            req.session.user_id = newUser.id
+            req.session.logged_in = true;
+            req.session.username = newUser.username;
+
             res.json(newUser);
-            console.log(newUser);
         };
     } catch (err) {
         console.log(err);

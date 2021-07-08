@@ -11,7 +11,9 @@ function SignUp({ setUser, user }) {
     const password = useRef();
 
     useEffect(() => {
-        if (user.username) setRedirect(true);
+        if (user.username) {
+            setRedirect(true);
+        }
     }, [user]);
 
 
@@ -19,6 +21,7 @@ function SignUp({ setUser, user }) {
         e.preventDefault();
         try {
             const newUser = await API.signUp({ email: email.current.value, username: username.current.value, password: password.current.value });
+            console.log(newUser);
             delete newUser.data.password;
             setUser(newUser);
             setRedirect(true);
@@ -31,18 +34,18 @@ function SignUp({ setUser, user }) {
     return (
         <Container>
             {redirect && <Redirect to='/' />}
-            <h1 style={{ textAlign: 'center', borderBottom: '1px solid black'}}>Sign Up</h1>
+            <h1 style={{ textAlign: 'center', borderBottom: '1px solid black' }}>Sign Up</h1>
             <form className="px-4 py-3">
                 <div className="form-group">
-                <label className="form-label">Email</label>
+                    <label className="form-label">Email</label>
                     <input type="email" className="form-control" ref={email} placeholder="email@example.com" />
                 </div>
                 <div className="form-group">
-                <label className="form-label">Username</label>
+                    <label className="form-label">Username</label>
                     <input type="text" name="username" placeholder="username" className='form-control' ref={username} />
                 </div>
                 <div className="form-group">
-                <label className="form-label">Password</label>
+                    <label className="form-label">Password</label>
                     <input type="password" name="password" placeholder="password" className='form-control' ref={password} />
                 </div>
                 <button className='btn btn-primary btn-block' onClick={signupHandler}>Signup</button>
