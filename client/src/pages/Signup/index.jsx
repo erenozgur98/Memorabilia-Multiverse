@@ -19,7 +19,6 @@ function SignUp({ setUser, user }) {
         e.preventDefault();
         try {
             const newUser = await API.signUp({ email: email.current.value, username: username.current.value, password: password.current.value });
-            console.log(newUser);
             delete newUser.data.password;
             setUser(newUser);
             setRedirect(true);

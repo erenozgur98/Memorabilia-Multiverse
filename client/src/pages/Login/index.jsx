@@ -21,7 +21,6 @@ function Login({ setUser, user }) {
         e.preventDefault();
         try {
             const newUser = await API.logIn({ username: username.current.value, password: password.current.value });
-            console.log(newUser);
             delete newUser.data.user.password;
             setUser(newUser);
             setRedirect(true);
