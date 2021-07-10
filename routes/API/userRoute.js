@@ -54,10 +54,8 @@ router.post('/signup', async (req, res) => {
         const email = await User.findOne({ where: { email: req.body.email } });
         const user = await User.findOne({ where: { username: req.body.username } });
         if (user) {
-            console.log('signup error =========', 'That username is taken!')
             res.status(400).json({ message: 'That username is taken' });
         } else if (email) {
-            console.log('signup error =========', 'That email is taken!');
             res.status(400).json({ message: 'That email is taken' });
         } else {
             const newUser = await User.create(req.body);
