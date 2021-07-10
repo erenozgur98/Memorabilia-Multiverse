@@ -49,7 +49,7 @@ function Login({ setUser, user }) {
                 <p>Don't have an account? Sign up <a href='/signup'>here</a>!</p>
             </div>
         </Container>
-    )
+    );
 };
 
 export default Login;
